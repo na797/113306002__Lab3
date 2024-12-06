@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>113306002_Lab3</title>
+	<div id="pageTitle">
+		<h1>113306002_Lab3_ Number Guessing Game</h1>
+	</div>
+	<div id="result"></div>
+</head>
+<body>
+	<script>
+		var min=1;
+		var max=100;
+		var ranNum=Math.floor(Math.random()*100)+1;
+		var count=7;
+
+		var input=window.prompt("請輸入"+min+'~'+max+"之間的數字\n還剩下"+count+"次機會");
+		var intInput=parseInt(input);
+
+
+		
+		while(count>0){
+			if(isNaN(intInput)||intInput>max||intInput<min){
+				window.alert("請輸入有效範圍內的數字(不能選擇範圍的上下限)");
+				input=window.prompt("請輸入"+min+'~'+max+"之間的數字\n還剩下"+count+"次機會");
+				intInput=parseInt(input);
+				continue;
+			}
+
+			if(intInput!=ranNum){
+				
+				if(intInput>ranNum){
+				 	max=intInput;
+				 	
+				 }
+				 else{
+				 	 min=intInput;
+				 	
+				 }
+
+
+
+			}
+			else{
+
+				window.alert("恭喜你答對了!");
+				var resultPic = document.getElementById("result");
+                resultPic.innerHTML = `
+                    <img src="correct.jpg" alt="Correct">`;
+				break;
+
+			}
+			count--;
+				 
+		
+
+			if(count==0){
+				 
+				window.alert("正確答案為"+ranNum);
+				var resultPic = document.getElementById("result");
+                resultPic.innerHTML = `
+                    <img src="wrong.jpg" alt="Wrong">`;
+				break;
+				
+			}
+			
+			input=window.prompt("請輸入"+min+'~'+max+"之間的數字\n還剩下"+count+"次機會");
+			intInput=parseInt(input);
+
+
+		}
+
+
+	</script>
+
+</body>
+</html>
